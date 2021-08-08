@@ -1,6 +1,17 @@
+module Solution where
+-- Problem 1
+myLast :: [a] -> a
+
+myLast (x:[]) = x
+myLast (x:xs) = myLast xs
+
+myLast' = head . reverse
+
+myLast'' xs = xs !! ( pred . pred . length $ xs )
+
+myLast''' = last
 --
---
---
+-- 
 --
 --
 --
