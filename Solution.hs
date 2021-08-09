@@ -83,7 +83,9 @@ decodeModified ((Multiple c a):xs) = nA  ++ decodeModified xs
 encodeDirect :: Eq a => [a] -> [Code a]
 encodeDirect = encodeModified  -- IDK what need to do.
 --
---
+-- Problem 14
+dupli :: [a] -> [a] 
+dupli = concat . map (\x -> [x,x])
 --
 --
 --
