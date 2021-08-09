@@ -47,7 +47,11 @@ compress [] = []
 compress lst@(x:_) = x : compress t where
   (_,t) = span (==x) lst
 --
---
+-- Problem 9
+pack :: Eq a => [a] -> [[a]]
+pack []        = []
+pack lst@(x:_) = h : pack t where
+  (h,t) = span (==x) lst
 --
 --
 --
