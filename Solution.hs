@@ -1,18 +1,15 @@
 module Solution where
 -- Problem 1
 myLast :: [a] -> a
-
+myLast []     = error "Solution.myLast: list is empty."
 myLast (x:[]) = x
 myLast (x:xs) = myLast xs
-
-myLast' = head . reverse
-
-myLast'' xs = xs !! ( pred . pred . length $ xs )
-
-myLast''' = last
---
 -- 
---
+-- Problem 2
+myButLast :: [a] -> [a] 
+myButLast []       = error "Solution.myButLast: list is empty."
+myButLast (x:[])   = error "Solution.myButLast: size of list must be >= 2."
+myButLast (x:_:[]) = x 
 --
 --
 --
