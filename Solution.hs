@@ -104,7 +104,12 @@ split xs i = (take i xs, drop i xs)
 slice :: [a] -> Int -> Int -> [a]
 slice xs s e = take (e - (pred s)) $ drop (pred s) xs
 --
---
+-- Problem 19
+rotate :: [a] -> Int -> [a]
+rotate []  _         = []
+rotate xs  0         = xs
+rotate lst i | i > 0 = (drop i lst) ++ (take i lst)
+             | i < 0 = rotate lst (length lst + i)
 --
 --
 --
