@@ -87,7 +87,10 @@ encodeDirect = encodeModified  -- IDK what need to do.
 dupli :: [a] -> [a] 
 dupli = concat . map (\x -> [x,x])
 --
---
+-- Problem 15
+repli :: [a] -> Int -> [a]
+repli [] _     = []
+repli xs count = concat $ map (take count . repeat) xs
 --
 --
 --
