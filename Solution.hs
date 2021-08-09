@@ -111,8 +111,10 @@ rotate xs  0         = xs
 rotate lst i | i > 0 = (drop i lst) ++ (take i lst)
              | i < 0 = rotate lst (length lst + i)
 --
---
---
+-- Problem 20
+remoteAt :: Int -> [a] -> (a, [a])
+remoteAt ind xs = (xs !! ind, [z | (i,z) <- zip [0..] xs, i /= ind]) 
+-- 
 --
 --
 --
