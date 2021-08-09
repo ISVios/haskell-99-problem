@@ -60,10 +60,16 @@ encode lst@(x:xs) = (count, x) : encode noXList where
   count   = length [z | z <- lst, z == x]
   noXList = [y | y <- lst, y /= x]
 --
+-- Problem 11
+data Code a = Single a | Multiple Int a deriving Show
 --
---
---
---
+encodeModified :: Eq a => [a] -> [Code a]
+encodeModified [] = []
+encodeModified lst@(x:_) | counter == 1 = Single x           : encodeModified t
+                         | otherwise    = Multiple counter x : encodeModified t
+  where
+    counter = length h
+    (h,t)   = span (x==) lst 
 --
 --
 --
