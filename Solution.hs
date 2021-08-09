@@ -19,7 +19,10 @@ elementAt (x:xs) i | (succ i) > length (x:xs) = error "Solution.elementAt: index
                    | i < 0                    = error "Solution.elementAt: index must be >= 0."
                    | otherwise                = elementAt xs (pred i) 
 --
---
+-- Problem 4
+myLength :: [a] -> Int
+myLength []     = 0
+myLength (_:xs) = 1 + myLength xs
 --
 --
 --
