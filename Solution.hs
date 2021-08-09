@@ -79,7 +79,9 @@ decodeModified ((Multiple c a):xs) = nA  ++ decodeModified xs
   where
     nA = take c $ repeat a
 --
---
+-- Problem 13
+encodeDirect :: Eq a => [a] -> [Code a]
+encodeDirect = encodeModified  -- IDK what need to do.
 --
 --
 --
