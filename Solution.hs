@@ -29,8 +29,9 @@ myReverse :: [a] -> [a]
 myReverse []     = []
 myReverse (x:xs) = myReverse xs ++ [x]
 --
---
---
+-- Problem 6
+isPalindrome :: Eq a => [a] -> Bool
+isPalindrome xs = myReverse xs == xs -- or use Prelude.reverse
 --
 --
 --
