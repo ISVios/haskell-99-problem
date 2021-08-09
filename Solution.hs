@@ -115,7 +115,10 @@ rotate lst i | i > 0 = (drop i lst) ++ (take i lst)
 remoteAt :: Int -> [a] -> (a, [a])
 remoteAt ind xs = (xs !! ind, [z | (i,z) <- zip [0..] xs, i /= ind]) 
 -- 
---
+-- Problem 21
+insertAt :: a -> [a] -> Int -> [a]
+insertAt chr [] _   = [chr]
+insertAt chr xs ind = take ind xs ++ [chr] ++ drop ind xs
 --
 --
 --
