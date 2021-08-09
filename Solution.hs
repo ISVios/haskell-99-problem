@@ -128,14 +128,28 @@ range :: Int -> Int -> [Int]
 range i j | i > j = myReverse [j..i]
 range i j         = [i..j]
 --
--- Problem 23
+-- Problem 24
 rndDiff :: [a] -> Int -> IO [a]
 rndDiff xs c = do
   rndLst <- sequence $ take c $ repeat $ (randomIO :: IO Int)
   bndLst <- return $ map (flip rem (length xs) . abs) rndLst
   return $ map (xs !!) bndLst
 --
---
+-- Problem 25
+rndPermu :: [a] -> IO [a]
+rndPermu xs = do
+    lst <- gen 0 []
+    return $ map (xs!!) lst
+  where
+    gen l stk | len == l = do return stk
+    gen l stk            = do
+                             r <- randomIO :: IO Int
+                             if not $ elem (fixR r) stk
+                             then gen (succ l) ((fixR r):stk)
+                             else gen l        stk
+    fixR = (flip rem len) . abs
+    len  = length xs
+                           
 --
 --
 --
