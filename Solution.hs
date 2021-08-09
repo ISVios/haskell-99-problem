@@ -1,4 +1,7 @@
 module Solution where
+--
+import System.Random -- Problem 23 
+--
 -- Problem 1
 myLast :: [a] -> a
 myLast []     = error "Solution.myLast: list is empty."
@@ -120,9 +123,17 @@ insertAt :: a -> [a] -> Int -> [a]
 insertAt chr [] _   = [chr]
 insertAt chr xs ind = take ind xs ++ [chr] ++ drop ind xs
 --
+-- Problem 22
+range :: Int -> Int -> [Int]
+range i j | i > j = myReverse [j..i]
+range i j         = [i..j]
 --
---
---
+-- Problem 23
+rndDiff :: [a] -> Int -> IO [a]
+rndDiff xs c = do
+  rndLst <- sequence $ take c $ repeat $ (randomIO :: IO Int)
+  bndLst <- return $ map (flip rem (length xs) . abs) rndLst
+  return $ map (xs !!) bndLst
 --
 --
 --
