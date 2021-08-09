@@ -92,7 +92,9 @@ repli :: [a] -> Int -> [a]
 repli [] _     = []
 repli xs count = concat $ map (take count . repeat) xs
 --
---
+-- Problem 16
+dropEvery :: [a] -> Int -> [a]
+dropEvery xs ind = [z | (i,z) <- zip [0..] xs, ind /= i]
 --
 --
 --
