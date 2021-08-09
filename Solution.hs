@@ -100,7 +100,9 @@ dropEvery xs ind = [z | (i,z) <- zip [0..] xs, ind /= i]
 split :: [a] -> Int -> ([a], [a])
 split xs i = (take i xs, drop i xs)
 --
---
+-- Problem 18
+slice :: [a] -> Int -> Int -> [a]
+slice xs s e = take (e - (pred s)) $ drop (pred s) xs
 --
 --
 --
