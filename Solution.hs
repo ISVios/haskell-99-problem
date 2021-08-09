@@ -41,7 +41,11 @@ flatten (Elem a)     = [a]
 flatten (List [])    = []
 flatten (List(x:xs)) = flatten x ++ flatten (List xs)
 --
---
+-- Problem 8
+compress :: Eq a => [a] -> [a]
+compress [] = []
+compress lst@(x:_) = x : compress t where
+  (_,t) = span (==x) lst
 --
 --
 --
