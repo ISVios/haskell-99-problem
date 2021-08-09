@@ -71,7 +71,13 @@ encodeModified lst@(x:_) | counter == 1 = Single x           : encodeModified t
     counter = length h
     (h,t)   = span (x==) lst 
 --
---
+-- Problem 12
+decodeModified :: [Code a] -> [a]
+decodeModified []                  = []
+decodeModified ((Single a):xs)     = [a] ++ decodeModified xs
+decodeModified ((Multiple c a):xs) = nA  ++ decodeModified xs
+  where
+    nA = take c $ repeat a
 --
 --
 --
