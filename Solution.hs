@@ -96,7 +96,9 @@ repli xs count = concat $ map (take count . repeat) xs
 dropEvery :: [a] -> Int -> [a]
 dropEvery xs ind = [z | (i,z) <- zip [0..] xs, ind /= i]
 --
---
+-- Problem 17
+split :: [a] -> Int -> ([a], [a])
+split xs i = (take i xs, drop i xs)
 --
 --
 --
