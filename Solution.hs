@@ -53,7 +53,12 @@ pack []        = []
 pack lst@(x:_) = h : pack t where
   (h,t) = span (==x) lst
 --
---
+-- Problem 10
+encode :: Eq a => [a] -> [(Int,a)]
+encode []         = []
+encode lst@(x:xs) = (count, x) : encode noXList where
+  count   = length [z | z <- lst, z == x]
+  noXList = [y | y <- lst, y /= x]
 --
 --
 --
