@@ -157,9 +157,14 @@ combination xs i = concat [
                     let (x,xs') = remoteAt z xs in
                       map (x:) (combination xs' (pred i)) | z <-[0..(pred . length $ xs)]
                       ]
---
---
---
+-- Problem 27
+group :: [a] -> [Int] -> [[a]]
+group xs size = concat [ f xs i | i <- size]
+  where
+    f xs i = map (\a-> h++[a]) t
+      where
+        h = take (pred i) xs
+        t = drop (pred i) xs
 --
 --
 --
