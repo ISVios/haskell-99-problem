@@ -1,18 +1,18 @@
 module Solution where
 --
-import System.Random -- Problem 23 
+import System.Random -- Problem 23
 --
 -- Problem 1
 myLast :: [a] -> a
 myLast []     = error "Solution.myLast: list is empty."
 myLast (x:[]) = x
 myLast (x:xs) = myLast xs
--- 
+--
 -- Problem 2
-myButLast :: [a] -> a 
+myButLast :: [a] -> a
 myButLast []       = error "Solution.myButLast: list is empty."
 myButLast (x:[])   = error "Solution.myButLast: size of list must be >= 2."
-myButLast (x:_:[]) = x 
+myButLast (x:_:[]) = x
 --
 -- Problem 3
 elementAt :: [a] -> Int -> a
@@ -20,7 +20,7 @@ elementAt []     _                     = error "Solution.elementAt: list is empt
 elementAt (x:_)  0                     = x
 elementAt (x:xs) i | (succ i) > length (x:xs) = error "Solution.elementAt: index is great than size of list."
                    | i < 0                    = error "Solution.elementAt: index must be >= 0."
-                   | otherwise                = elementAt xs (pred i) 
+                   | otherwise                = elementAt xs (pred i)
 --
 -- Problem 4
 myLength :: [a] -> Int
@@ -72,7 +72,7 @@ encodeModified lst@(x:_) | counter == 1 = Single x           : encodeModified t
                          | otherwise    = Multiple counter x : encodeModified t
   where
     counter = length h
-    (h,t)   = span (x==) lst 
+    (h,t)   = span (x==) lst
 --
 -- Problem 12
 decodeModified :: [Code a] -> [a]
@@ -87,7 +87,7 @@ encodeDirect :: Eq a => [a] -> [Code a]
 encodeDirect = encodeModified  -- IDK what need to do.
 --
 -- Problem 14
-dupli :: [a] -> [a] 
+dupli :: [a] -> [a]
 dupli = concat . map (\x -> [x,x])
 --
 -- Problem 15
@@ -116,8 +116,8 @@ rotate lst i | i > 0 = (drop i lst) ++ (take i lst)
 --
 -- Problem 20
 remoteAt :: Int -> [a] -> (a, [a])
-remoteAt ind xs = (xs !! ind, [z | (i,z) <- zip [0..] xs, i /= ind]) 
--- 
+remoteAt ind xs = (xs !! ind, [z | (i,z) <- zip [0..] xs, i /= ind])
+--
 -- Problem 21
 insertAt :: a -> [a] -> Int -> [a]
 insertAt chr [] _   = [chr]
@@ -149,18 +149,14 @@ rndPermu xs = do
                              else gen l        stk
     fixR = (flip rem len) . abs
     len  = length xs
-                           
+
 --
---
---
---
---
---
---
---
---
---
---
+-- Problem 26
+combination xs 1 = map (:[]) xs
+combination xs i = concat [
+                    let (x,xs') = remoteAt z xs in
+                      map (x:) (combination xs' (pred i)) | z <-[0..(pred . length $ xs)]
+                      ]
 --
 --
 --
