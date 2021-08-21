@@ -192,7 +192,9 @@ myGCD a b | a < 0 || b < 0 = myGCD (abs a) (abs b)
   where
     b' = rem a b
 --
---
+-- Problem 33
+coprime :: Int -> Int -> Bool
+coprime a b = myGCD a b == 1
 --
 --
 --
