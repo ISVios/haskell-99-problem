@@ -167,7 +167,7 @@ group xs size = concat [ f xs i | i <- size]
         t = drop (pred i) xs
 --
 -- Problem 28
-lfsoft :: [[a]] -> [[a]]
+lfsoft :: (Foldable t, Ord (t a)) => [t a] -> [t a]
 lfsoft xxs = concat $ [ys | (j, ys) <- ff, k <- [fst . minimum $ ff .. fst . maximum $ ff], j == k]
   where
     ff = [(len i, f i) | i <- [fst . minimum $ lst .. fst . maximum $ lst] ]
@@ -175,8 +175,13 @@ lfsoft xxs = concat $ [ys | (j, ys) <- ff, k <- [fst . minimum $ ff .. fst . max
     len i = length $ f i
     lst = map (\xs -> (length xs, xs)) xxs
 --
---
---
+-- Problem 31 (IDK where other number)
+--isPrime :: Int -> Bool
+isPrime 0 = False
+isPrime 1 = False
+isPrime 2 = False
+isPrime n | n < 0     = isPrime (abs n)
+          | otherwise = not $ elem 0 $ [ rem  n j  | j  <-  [2..(pred n)]]
 --
 --
 --
