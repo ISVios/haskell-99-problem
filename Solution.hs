@@ -196,7 +196,10 @@ myGCD a b | a < 0 || b < 0 = myGCD (abs a) (abs b)
 coprime :: Int -> Int -> Bool
 coprime a b = myGCD a b == 1
 --
---
+-- Problem 34
+totient :: Int -> Int
+totient 1 = 1
+totient n = length $ filter snd $ [ (j, coprime j n ) | j <- [1..(pred n)]]
 --
 --
 --
