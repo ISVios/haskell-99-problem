@@ -166,7 +166,14 @@ group xs size = concat [ f xs i | i <- size]
         h = take (pred i) xs
         t = drop (pred i) xs
 --
---
+-- Problem 28
+lfsoft :: [[a]] -> [[a]]
+lfsoft xxs = concat $ [ys | (j, ys) <- ff, k <- [fst . minimum $ ff .. fst . maximum $ ff], j == k]
+  where
+    ff = [(len i, f i) | i <- [fst . minimum $ lst .. fst . maximum $ lst] ]
+    f i = [z | (j,z) <- lst, i == j]
+    len i = length $ f i
+    lst = map (\xs -> (length xs, xs)) xxs
 --
 --
 --
