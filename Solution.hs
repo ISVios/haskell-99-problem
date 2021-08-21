@@ -176,15 +176,21 @@ lfsoft xxs = concat $ [ys | (j, ys) <- ff, k <- [fst . minimum $ ff .. fst . max
     lst = map (\xs -> (length xs, xs)) xxs
 --
 -- Problem 31 (IDK where other number)
---isPrime :: Int -> Bool
+isPrime :: Int -> Bool
 isPrime 0 = False
 isPrime 1 = False
 isPrime 2 = False
 isPrime n | n < 0     = isPrime (abs n)
           | otherwise = not $ elem 0 $ [ rem  n j  | j  <-  [2..(pred n)]]
 --
---
---
+-- Problem 32
+myGCD :: Int -> Int -> Int
+myGCD a b | a < 0 || b < 0 = myGCD (abs a) (abs b)
+          | b > a          = myGCD b a
+          | b' == 0        = b
+          | otherwise      = myGCD b b'
+  where
+    b' = rem a b
 --
 --
 --
